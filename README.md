@@ -11,6 +11,7 @@ For example, you can write in one line how to install your package.
 ```bash
 npm install <your-package> # npm
 yarn add <your-package> # yarn
+# another command...
 ```
 
 ### ✨ After:
@@ -58,6 +59,12 @@ npx add-pkg <your-package> -g
 ```bash
 npx add-pkg <your-package> --dry-run
 ```
+
+# Priority of the package manager
+
+1. A package manager that is installed and also has a lockfile
+1. Installed package manager (npm excluded)
+1. npm
 
 # License
 
