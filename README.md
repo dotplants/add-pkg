@@ -21,12 +21,11 @@ npx add-pkg <your-package>
 
 # Supporting package managers
 
+- [pnpm](https://pnpm.js.org/)
 - [yarn](https://yarnpkg.com/)
 - [npm](https://www.npmjs.com/)
 
-## To do
-
-- [pnpm](https://pnpm.js.org/)
+> Isn't your favorited package manager listed here? Please create issue/PR here! 😆
 
 # Usage
 

@@ -1,4 +1,13 @@
 const managers = {
+  pnpm: {
+    file: 'pnpm-lock.yaml',
+    exist: 'pnpm -v',
+    add: {
+      normal: 'pnpm add {packages}',
+      dev: 'pnpm add -D {packages}',
+      global: 'pnpm add {packages} --global'
+    }
+  },
   yarn: {
     file: 'yarn.lock',
     exist: 'yarn -v',
@@ -9,6 +18,7 @@ const managers = {
     }
   },
   npm: {
+    // npm write last (for fallback)
     file: 'package-lock.json',
     exist: 'npm -v',
     add: {
