@@ -1,6 +1,6 @@
 {
   "name": "add-pkg",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "main": "src/index.js",
   "bin": {
     "add-pkg": "bin/add-pkg.js"
