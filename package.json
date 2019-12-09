@@ -1,7 +1,10 @@
 {
   "name": "add-pkg",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "src/index.js",
+  "bin": {
+    "add-pkg": "bin/add-pkg.js"
+  },
   "description": "Install the package with your package manager",
   "author": "dotPlants HQ <oss@dotplants.net>",
   "contributors": [
