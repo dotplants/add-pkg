@@ -1,0 +1,37 @@
+{
+  "name": "add-pkg",
+  "version": "0.1.0",
+  "main": "src/index.js",
+  "description": "Install the package with your package manager",
+  "author": "dotPlants HQ <oss@dotplants.net>",
+  "contributors": [
+    "nzws <nzws@hq.dotplants.net>"
+  ],
+  "license": "MIT",
+  "repository": "https://github.com/dotplants/add-pkg.git",
+  "homepage": "https://github.com/dotplants/add-pkg",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint:js": "eslint --ignore-path .gitignore \"**/*.js\"",
+    "lint:prettier": "pretty-quick --check",
+    "lint": "npm-run-all lint:* -s",
+    "format:prettier": "pretty-quick",
+    "format": "npm-run-all format:* -s",
+    "add-pkg": "node src"
+  },
+  "devDependencies": {
+    "@yuzulabo/eslint-config": "~1",
+    "@yuzulabo/prettier-config": "~1",
+    "eslint": "~6.7.2",
+    "npm-run-all": "~4",
+    "prettier": "~1.19.1",
+    "pretty-quick": "^2.0.1"
+  },
+  "prettier": "@yuzulabo/prettier-config",
+  "eslintConfig": {
+    "extends": "@yuzulabo"
+  },
+  "dependencies": {}
+}
