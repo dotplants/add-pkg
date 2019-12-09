@@ -3,49 +3,52 @@ const existFile = require('../utils/exist-file');
 
 const managers = require('../managers');
 
-const result = {
-  manager: [],
-  file: []
-};
+const isWin = process.platform === 'win32';
 
 const checker = async managerName => {
+  const result = {
+    managerName,
+    hasManager: false,
+    hasLockFile: false
+  };
   const v = managers[managerName];
   if (!v) {
     throw new Error('Unknown manager');
   }
 
-  const manager = await exec(v.exist);
+  const command = isWin ? `where.exe ${v.base}` : `which ${v.base}`;
+  const manager = await exec(command);
   if (!manager) {
-    return false;
+    return result;
   }
-  result.manager.push(managerName);
+  result.hasManager = true;
 
   const file = await existFile(v.file);
   if (!file) {
-    return false;
+    return result;
   }
-  result.file.push(managerName);
+  result.hasLockFile = true;
 
-  return managerName;
+  return result;
 };
 
 const selectManager = async () => {
   const promise = Object.keys(managers).map(key => checker(key));
   const test = await Promise.all(promise);
 
-  // step1: ここで一番若いtestがあれば召喚
-  const step1 = test.find(v => v);
+  // step1: has manager & lockfile
+  const step1 = test.find(v => v.hasManager && v.hasLockFile);
   if (step1) {
-    return step1;
+    return step1.managerName;
   }
 
-  // step2: が無ければresult.manager[0]
-  const step2 = result.manager[0];
+  // step2: has manager
+  const step2 = test.find(v => v.hasManager);
   if (step2) {
-    return step2;
+    return step2.managerName;
   }
 
-  // がなければerror
+  // error
   throw new Error('You do not have any package manager!');
 };
 
