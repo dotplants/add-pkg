@@ -8,7 +8,7 @@ const finder = (array, searchArray) => {
     }
   }
 
-  return indexes[0] ? indexes : false;
+  return indexes[0] === undefined ? false : indexes;
 };
 
 const arrayRemover = (array, removeArray) => {

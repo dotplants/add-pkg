@@ -20,9 +20,10 @@
     "lint:js": "eslint --ignore-path .gitignore \"**/*.js\"",
     "lint:prettier": "pretty-quick --check",
     "lint": "npm-run-all lint:* -s",
+    "format:js": "eslint --fix --ignore-path .gitignore \"**/*.js\"",
     "format:prettier": "pretty-quick",
     "format": "npm-run-all format:* -s",
-    "add-pkg": "node src"
+    "add-pkg": "node src --dry-run"
   },
   "devDependencies": {
     "@yuzulabo/eslint-config": "~1",
