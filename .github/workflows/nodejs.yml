@@ -23,7 +23,7 @@ jobs:
         id: cache
         with:
           path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+          key: ${{ runner.os }}-${{ matrix.node-version }}-${{ hashFiles('yarn.lock') }}
 
       - name: Install deps
         if: steps.cache.outputs.cache-hit != 'true'
